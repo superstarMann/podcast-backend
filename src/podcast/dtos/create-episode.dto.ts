@@ -5,7 +5,7 @@ import { IsNumber, IsString } from "class-validator";
 export class CreateEpisodeDto{
     @Field(() => Number)
     @IsNumber()
-    id: number;
+    id: number; 
 
     @Field(() => String)
     @IsString()
