@@ -10,8 +10,4 @@ export class UpdateEpisodeDto {
     @Field(() => String, {nullable: true})
     @IsString()
     category?: string;
-
-    @Field(() => Number, {nullable: true})
-    @IsNumber()
-    rating?: number;
   }

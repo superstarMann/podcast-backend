@@ -1,12 +1,9 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsNumber, IsString } from "class-validator";
+import { PodCastSearchInput } from "./podcast.dto";
  
 @InputType()
-export class CreateEpisodeDto{
-    @Field(() => Number)
-    @IsNumber()
-    id: number; 
-
+export class CreateEpisodeDto extends PodCastSearchInput{
     @Field(() => String)
     @IsString()
     title: string;
@@ -14,9 +11,5 @@ export class CreateEpisodeDto{
     @Field(() => String)
     @IsString()
     category: string;
-
-    @Field(() => Number)
-    @IsNumber()
-    rating: number;
 
 }
