@@ -1,4 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { CreateEpisodeDto } from './dtos/create-episode.dto';
+import { CreatePodcastDto } from './dtos/create-podcast.dto';
+import { CoreOutPut } from './dtos/output.dto';
+import { EpisodesOutput, EpisodesSearchInput, PodcastOutput } from './dtos/podcast.dto';
+import { UpdateEpisodeDto } from './dtos/update-episode.dto';
+import { UpdatePodcastDto } from './dtos/update-podcast.dto';
+import { Episode } from './entities/episode.entity';
+import { Podcast } from './entities/podcast.entity';
 
 @Injectable()
 export class PodcastsService {
@@ -7,8 +15,8 @@ export class PodcastsService {
   getAllPodcasts(): Podcast[] {
     return this.podcasts;
   }
-
-  createPodcast({ title, category }: CreatePodcastDto): CoreOutput {
+/*
+  createPodcast({ title, category }: CreatePodcastDto): CoreOutPut {
     this.podcasts.push({
       id: this.podcasts.length + 1,
       title,
@@ -28,12 +36,12 @@ export class PodcastsService {
       };
     }
     return {
-      ok: true,
-      podcast,
+     ok:true,
+     podcast
     };
   }
 
-  deletePodcast(id: number): CoreOutput {
+  deletePodcast(id: number): CoreOutPut {
     const { ok, error } = this.getPodcast(id);
     if (!ok) {
       return { ok, error };
@@ -42,7 +50,7 @@ export class PodcastsService {
     return { ok };
   }
 
-  updatePodcast({ id, ...rest }: UpdatePodcastDto): CoreOutput {
+  updatePodcast({ id, ...rest }: UpdatePodcastDto): CoreOutPut {
     const { ok, error, podcast } = this.getPodcast(id);
     if (!ok) {
       return { ok, error };
@@ -64,7 +72,7 @@ export class PodcastsService {
     id: podcastId,
     title,
     category,
-  }: CreateEpisodeDto): CoreOutput {
+  }: CreateEpisodeDto): CoreOutPut {
     const { podcast, ok, error } = this.getPodcast(podcastId);
     if (!ok) {
       return { ok, error };
@@ -82,7 +90,7 @@ export class PodcastsService {
     return { ok: true };
   }
 
-  deleteEpisode({ podcastId, episodeId }: EpisodesSearchInput): CoreOutput {
+  deleteEpisode({ podcastId, episodeId }: EpisodesSearchInput): CoreOutPut {
     const { podcast, error, ok } = this.getPodcast(podcastId);
     if (!ok) {
       return { ok, error };
@@ -99,7 +107,7 @@ export class PodcastsService {
     podcastId,
     episodeId,
     ...rest
-  }: UpdateEpisodeDto): CoreOutput {
+  }: UpdateEpisodeDto): CoreOutPut {
     const { podcast, error, ok } = this.getPodcast(podcastId);
     if (!ok) {
       return { ok, error };
@@ -114,5 +122,5 @@ export class PodcastsService {
     });
     return { ok: true };
   }
+  */
 }
-
